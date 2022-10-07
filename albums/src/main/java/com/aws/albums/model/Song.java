@@ -22,9 +22,6 @@ public class Song {
     @JsonProperty("id")
     @Column(name = "id")
     private @Id @GeneratedValue Long id;
-
-//    @Column(name = "album_id")
-//    private Long albumId;
     @JsonProperty("songName")
     @Column(name = "song_name")
     private String songName;
@@ -47,47 +44,6 @@ public class Song {
         this.isDeleted = isDeleted;
         this.album = album;
     }
-
-
-//    public Long getId() {
-//        return id;
-//    }
-//
-//    public void setId(Long id) {
-//        this.id = id;
-//    }
-//
-////    public Long getAlbumId() {
-////        return albumId;
-////    }
-////
-////    public void setAlbumId(Long albumId) {
-////        this.albumId = albumId;
-////    }
-//
-//    public String getSongName() {
-//        return songName;
-//    }
-//
-//    public void setSongName(String songName) {
-//        this.songName = songName;
-//    }
-//
-//    public Timestamp getCreatedAt() {
-//        return createdAt;
-//    }
-//
-//    public void setCreatedAt(Timestamp createdAt) {
-//        this.createdAt = createdAt;
-//    }
-//
-//    public boolean isDeleted() {
-//        return isDeleted;
-//    }
-//
-//    public void setDeleted(boolean deleted) {
-//        isDeleted = deleted;
-//    }
 
     @Override
     public int hashCode() {

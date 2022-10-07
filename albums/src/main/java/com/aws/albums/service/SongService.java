@@ -1,6 +1,7 @@
 package com.aws.albums.service;
 
 import com.aws.albums.dto.SongDTO;
+import com.aws.albums.exception.SongNotFoundException;
 import com.aws.albums.model.Song;
 import com.aws.albums.repository.SongRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +44,7 @@ public class SongService {
             SongDTO dto = mdoToDto(song);
             return dto;
         } else {
-            return null;
+            throw new SongNotFoundException(id);
         }
     }
 
