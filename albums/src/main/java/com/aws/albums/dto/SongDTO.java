@@ -12,8 +12,6 @@ import java.sql.Timestamp;
 @Setter
 public class SongDTO {
     private Long id;
-//    @JsonProperty("album_id")
-//    private Long albumId;
     @JsonProperty("song_name")
     private String songName;
     @JsonProperty("created_at")
@@ -31,7 +29,6 @@ public class SongDTO {
     public static SongDTO mdoToDto(Song song) {
         SongDTO songDTO = new SongDTO();
         songDTO.setId(song.getId());
-//        songDTO.setAlbumId(song.getAlbumId());
         songDTO.setSongName(song.getSongName());
         songDTO.setCreatedAt(song.getCreatedAt());
         songDTO.setDeleted(song.isDeleted());

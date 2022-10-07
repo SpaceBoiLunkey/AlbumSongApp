@@ -1,6 +1,7 @@
 package com.aws.albums.service;
 
 import com.aws.albums.dto.AlbumDTO;
+import com.aws.albums.exception.AlbumNotFoundException;
 import com.aws.albums.model.Album;
 import com.aws.albums.repository.AlbumRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +41,7 @@ public class AlbumService {
             AlbumDTO dto = AlbumDTO.mdoToDto(album);
             return dto;
         } else {
-            return null;
+            throw new AlbumNotFoundException(id);
         }
     }
 

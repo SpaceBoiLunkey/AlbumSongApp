@@ -2,6 +2,10 @@ package com.aws.albums.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -11,6 +15,10 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "album_bucket", schema = "aws_s3")
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Album {
     @JsonProperty("id")
     @Column(name = "id")
@@ -32,62 +40,12 @@ public class Album {
     @JsonIgnore
     private List<Song> songs = new ArrayList<>();
 
-    Album() {}
-
     public Album(String albumName, String bandName, Timestamp createdAt, boolean isDeleted, List<Song> songs) {
         this.albumName = albumName;
         this.bandName = bandName;
         this.createdAt = createdAt;
         this.isDeleted = isDeleted;
         this.songs = songs;
-    }
-
-    public List<Song> getSongs() {
-        return songs;
-    }
-
-    public void setSongs(List<Song> songs) {
-        this.songs = songs;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getAlbumName() {
-        return albumName;
-    }
-
-    public void setAlbumName(String albumName) {
-        this.albumName = albumName;
-    }
-
-    public String getBandName() {
-        return bandName;
-    }
-
-    public void setBandName(String bandName) {
-        this.bandName = bandName;
-    }
-
-    public Timestamp getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Timestamp createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public boolean isDeleted() {
-        return isDeleted;
-    }
-
-    public void setDeleted(boolean deleted) {
-        isDeleted = deleted;
     }
 
     @Override
