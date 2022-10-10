@@ -13,7 +13,3 @@ public class AlbumsApplication {
 }
 
 //TODO:
-//focus on hibernate, annotations, JPA
-//read up on difference between hibernate and JPA
-//read up on spring containers and how app.prop is loaded into app
-//read meaning of @Configuration, @Bean, @Controller, @Service, @Repository, @Component, @Singleton, @ComponentScan, @Autowired,

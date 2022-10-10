@@ -2,12 +2,12 @@ package com.aws.albums.dto;
 
 import com.aws.albums.model.Album;
 import com.aws.albums.model.Song;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -22,12 +22,12 @@ public class AlbumDTO {
     private Timestamp createdAt;
     @JsonProperty("is_deleted")
     private boolean isDeleted;
-
-    private List<Song> songs = new ArrayList<>();
+    @JsonIgnore
+    private List<Song> songs;
 
 
     public static Album dtoToMdo(AlbumDTO albumDTO) {
-        Album album = new Album(albumDTO.name, albumDTO.bandName, albumDTO.createdAt, albumDTO.isDeleted, albumDTO.songs);
+        Album album = new Album(albumDTO.name, albumDTO.bandName, albumDTO.createdAt, albumDTO.isDeleted);
         return album;
     }
 
@@ -38,6 +38,7 @@ public class AlbumDTO {
         albumDTO.setBandName(album.getBandName());
         albumDTO.setCreatedAt(album.getCreatedAt());
         albumDTO.setDeleted(album.isDeleted());
+        albumDTO.setSongs(album.getSongs());
         return albumDTO;
     }
 }

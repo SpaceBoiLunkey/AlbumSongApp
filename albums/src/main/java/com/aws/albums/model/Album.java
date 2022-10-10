@@ -9,7 +9,6 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -38,14 +37,13 @@ public class Album {
 
     @OneToMany(mappedBy = "album", cascade = CascadeType.ALL)
     @JsonIgnore
-    private List<Song> songs = new ArrayList<>();
+    private List<Song> songs;
 
-    public Album(String albumName, String bandName, Timestamp createdAt, boolean isDeleted, List<Song> songs) {
+    public Album(String albumName, String bandName, Timestamp createdAt, boolean isDeleted) {
         this.albumName = albumName;
         this.bandName = bandName;
         this.createdAt = createdAt;
         this.isDeleted = isDeleted;
-        this.songs = songs;
     }
 
     @Override
