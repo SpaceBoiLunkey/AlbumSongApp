@@ -1,8 +1,7 @@
 package com.aws.albums.model;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -33,16 +32,14 @@ public class Song {
     private boolean isDeleted;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JsonProperty("album_id")
-    @JsonIdentityInfo(generator= ObjectIdGenerators.PropertyGenerator.class, property="id")
+    @JsonIgnore
     @JoinColumn(foreignKey = @ForeignKey(name = "album_id"), name = "album_id", referencedColumnName = "id", nullable = false)
     private Album album;
 
-    public Song(String songName, Timestamp createdAt, boolean isDeleted, Album album) {
+    public Song(String songName, Timestamp createdAt, boolean isDeleted) {
         this.songName = songName;
         this.createdAt = createdAt;
         this.isDeleted = isDeleted;
-        this.album = album;
     }
 
     @Override

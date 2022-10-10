@@ -2,6 +2,7 @@ package com.aws.albums.dto;
 
 import com.aws.albums.model.Album;
 import com.aws.albums.model.Song;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,11 +19,11 @@ public class SongDTO {
     private Timestamp createdAt;
     @JsonProperty("is_deleted")
     private boolean isDeleted;
-    @JsonProperty("album_id")
+    @JsonIgnore
     private Album album;
 
     public static Song dtoToMdo(SongDTO songDTO) {
-        Song song = new Song(songDTO.songName, songDTO.createdAt, songDTO.isDeleted, songDTO.album);
+        Song song = new Song(songDTO.songName, songDTO.createdAt, songDTO.isDeleted);
         return song;
     }
 
